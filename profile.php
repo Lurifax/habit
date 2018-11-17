@@ -102,10 +102,10 @@ include "UserTodayHabits.php";
 
 <!--
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src="js/index.js"></script>
-<script src="errorHandler.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 -->
+<script src="js/index.js"></script>
+<script src="js/errorHandler.js"></script>
 
 </body>
 </html>

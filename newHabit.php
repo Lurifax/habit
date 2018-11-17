@@ -53,34 +53,6 @@ success_HabitSuksessfyltRegistrert();
 }
 
 
-/*
-
-      if ( $mysqli->query($sqlHabit)) {
-
-        success();
-
-        }
-
-        else {
-
-          error();
-
-  }
-
-
-
-
-while($rad = mysqli_fetch_array($resultat)){
-  echo "<tr>";
-  echo "<td>" . $rad['kategori'] . "</td>";
-  echo "<td>" . $rad['habit'] . "</td>";
-  echo "<td>" . $rad['habit_dag'] . "</td>";
-  echo "<td><input type='checkbox'>" . $rad['habit_ferdig'] . "</input></td>";
-  echo "</tr>";
-}
-echo "</table>";
-}*/
-
 
 
 ?>
