@@ -98,14 +98,15 @@ include "UserTodayHabits.php";
     ?>
   </p>
 
-<!-- Foreløpig ikke i bruk og må vurderes mot slutten med stylingen -->
 
-<!--
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
--->
-<script src="js/index.js"></script>
-<script src="js/errorHandler.js"></script>
+<!-- Diverse javascript for feilhåndtering og styling-->
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/errorHandler.js"></script>
+
+
 
 </body>
+
 </html>
