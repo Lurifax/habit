@@ -65,19 +65,4 @@ else {
 
 
 
-
-/*
-function updateHabit(){
-  $conn = new mysqli($host,$user,$pass,$db);
-  $updateHabitDone = $mysqli->query("UPDATE USERHABIT SET isDONE = 1 WHERE USERID = $userId AND HABITID = $habitId") or die ($mysqli->error());
-  $mysqli->query($updateHabitDone);
-  header("location: profile.php");
-}
-
-
-
-}
-*/
-//
-
 ?>
