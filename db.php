@@ -1,5 +1,5 @@
 <?php
-/* Database connection settings */
+// Databasetilkobling
 
 require 'secrets.php';
 

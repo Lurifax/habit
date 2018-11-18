@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     require 'newHabit.php';
   }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -104,6 +105,7 @@ include "UserTodayHabits.php";
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/errorHandler.js"></script>
+  <script src="js/updateHabit.js"></script>
 
 
 

@@ -43,7 +43,7 @@ if ($resultat->num_rows > 0 ) {
   $mysqli->query($sqlHabit);
   $habitId = $mysqli->insert_id;
 
-//Løkke som oppretter flere habiten på dagen(e) som er valgt. Kan bli valgt flere dager samtidig.
+//Løkke som oppretter flere habits på dagen(e) som er valgt. Kan bli valgt flere dager samtidig.
   foreach($days as $day){
     $sqlUserHabit = "INSERT INTO userhabit (userId, habitId, day) "
     . "VALUES ('$userId', '$habitId', '$day')";
