@@ -31,12 +31,13 @@ else {
 
 
 
-echo "<form action='' method='post' name='updateHabit'>";
+
 
 
   while($row = mysqli_fetch_array($dagensHabits)){
     $isDone = $row['isDone'];
     $habitId = $row['id'];
+    echo "<form action='updateHabit.php' method='post' name='updateHabit'>";
     echo "<tr>";
     echo "<td>" . $habitId . "</td>";
     echo "<td>" . $row['name'] . "</td>";
@@ -52,13 +53,17 @@ echo "<form action='' method='post' name='updateHabit'>";
         default:
       }
     echo "<td>" . $isDone . "</td>";
-    echo "<td>" . "<input type='submit' value='Utfort' name='$habitId'></input>" . "</td>";
+    echo "<td>" . "<input type='submit' value='Utfort'></input>" . "</td>";
+    echo "<input type='hidden' value='$habitId' name='habitId'></input>";
+    echo "</tr>";
+    echo "</form>";
 
   }
 
   echo "</table>";
 }
-echo "</form>";
+
+
 
 
 /*
@@ -68,13 +73,11 @@ function updateHabit(){
   $mysqli->query($updateHabitDone);
   header("location: profile.php");
 }
-*/
-if (isset($_POST[$habitId])) {
-  $updateHabitDone = $mysqli->query("UPDATE USERHABIT SET isDONE = 1 WHERE USERID = $userId AND HABITID = $habitId") or die ($mysqli->error());
-  $mysqli->query($updateHabitDone);
-  header("location: profile.php");
+
+
 
 }
+*/
 //
 
 ?>
