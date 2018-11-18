@@ -27,13 +27,7 @@ else {
   </tr>";
 
 // Lager her oversikten i en tabell med dagens habits
-
-
-
-
-
-
-
+// Lager en form per rad for å bruke POST verdiene i updateHabit.php
   while($row = mysqli_fetch_array($dagensHabits)){
     $isDone = $row['isDone'];
     $habitId = $row['id'];
