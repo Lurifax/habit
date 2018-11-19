@@ -8,14 +8,14 @@ require 'db.php';
 $userId = $_SESSION['id'];
 $resultat = $mysqli->query("SELECT * FROM USERHABIT WHERE USERID = $userId");
 $day = strtolower(date('l'));
-$dagUtenHabit = $mysqli->query("SELECT * FROM USERHABIT WHERE USERID = $userId AND DAY != '$day'");
+$dagUtenHabit = $mysqli->query("SELECT * FROM USERHABIT WHERE USERID = $userId AND DAY = '$day'");
 
 // Sjekker her om det er noen habits registrert på brukeren, hvis ikke skrives det til bruker
 if ($resultat->num_rows == 0) {
   echo "Ingen habits registrert. Opprett habits for å se dine habits.";
 
 // Sjekker her om det er habits registrert på en annen dag enn idag, hvis ja skrives det ut til brukeren
-} elseif ($dagUtenHabit->num_rows > 0) {
+} elseif ($dagUtenHabit->num_rows == 0) {
   echo "Du har ingen flere habits a utfore for idag.";
 
 // Hvis det er registrert habits for dagen idag skrives tabell med habits ut
