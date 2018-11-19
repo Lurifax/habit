@@ -34,9 +34,12 @@ if ($resultat->num_rows == 0) {
 // Lager her oversikten i en tabell med dagens habits
 // Lager en form per rad for å bruke POST verdiene i updateHabit.php
   while($row = mysqli_fetch_array($dagensHabits)){
+    $inputEditable = "<td>" . "<input type='submit' value='Utfort'></input>" . "</td>";
+    $inputDisabled = "<td>" . "<input type='submit' value='Utfort' disabled></input>" . "</td>";
     $isDone = $row['isDone'];
     $habitId = $row['id'];
     $habitDay = $row['day'];
+    $inputUtfort = '';
     echo "<form action='updateHabit.php' method='post' name='updateHabit'>";
     echo "<tr>";
     echo "<td>" . $habitId . "</td>";
@@ -46,14 +49,17 @@ if ($resultat->num_rows == 0) {
     switch ($isDone) {
       case "0":
         $isDone = 'Ikke utfort';
+        $inputUtfort = $inputEditable;
         break;
       case "1":
         $isDone = 'Utfort';
+        $inputUtfort = $inputDisabled;
         break;
         default:
       }
     echo "<td>" . $isDone . "</td>";
-    echo "<td>" . "<input type='submit' value='Utfort'></input>" . "</td>";
+    //echo "<td>" . "<input type='submit' value='Utfort'></input>" . "</td>";
+    echo $inputUtfort;
     echo "<input type='hidden' value='$habitId' name='habitId'></input>";
     echo "<input type='hidden' value='$habitDay' name='habitDay'></input>";
     echo "</tr>";
