@@ -6,6 +6,7 @@ require 'db.php';
 
 //Setter userid og sjekker med $resultat om det er registrerte habits på brukeren.
 $userId = $_SESSION['id'];
+$fornavn = $_SESSION['fornavn'];
 $resultat = $mysqli->query("SELECT * FROM USERHABIT WHERE USERID = $userId");
 $day = strtolower(date('l'));
 $dagUtenHabit = $mysqli->query("SELECT * FROM USERHABIT WHERE USERID = $userId AND DAY = '$day'");
@@ -21,10 +22,9 @@ if ($resultat->num_rows == 0) {
 // Hvis det er registrert habits for dagen idag skrives tabell med habits ut
 }else {
   $dagensHabits = $mysqli->query("SELECT userhabit.habitid, userhabit.day, userhabit.isDone, habit.id, habit.name from userhabit inner JOIN habit on userhabit.habitid=habit.id where userhabit.day='$day' and userhabit.userid = $userId") or die ($mysqli->error());
-  echo "<h2>Dagens habits</h2>";
+  echo "<h2>Dagens habits for " . ucfirst($fornavn) . "</h2>";
   echo "<table border='1'>
   <tr>
-  <th>Id</th>
   <th>Habit</th>
   <th>Habit-dag</th>
   <th>Habit-status</th>
@@ -42,7 +42,6 @@ if ($resultat->num_rows == 0) {
     $inputUtfort = '';
     echo "<form action='updateHabit.php' method='post' name='updateHabit'>";
     echo "<tr>";
-    echo "<td>" . $habitId . "</td>";
     echo "<td>" . $row['name'] . "</td>";
     echo "<td>" . $habitDay . "</td>";
     // Endrer her verdiene som lagres i databasen (0,1) til mer forståelige statuser

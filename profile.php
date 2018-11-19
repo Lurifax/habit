@@ -46,7 +46,7 @@ include "UserTodayHabits.php";
 
 <div class="nyHabit">
     <!-- Opprett ny habit -->
-    <h2>Opprett ny habit</h2>
+    <h2>Opprett ny habit for <?php echo ucfirst($fornavn); ?></h2>
     <form action="newHabit.php" method="post" autocomplete="off" id="newHabit">
     <p>
       <label>Velg dag onsket for habiten</label>
@@ -69,6 +69,13 @@ include "UserTodayHabits.php";
 <div>
   <a href="changeHabits.php">
   <input type="button" value="Se/endre dine habits" />
+</a>
+  <p>
+</div>
+
+<div>
+  <a href="progressHabit.php">
+  <input type="button" value="Habitprogresjon" />
 </a>
   <p>
 </div>
