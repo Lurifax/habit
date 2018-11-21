@@ -61,7 +61,7 @@ include "UserTodayHabits.php";
 
       <label>Hva er din habit?</label><br />
       <input type="text" name="habit" required/><br /><p>
-      <input type="submit" name="newHabit">
+      <input type="submit" name="newHabit" value="Lagre habit">
   </form>
 </div>
 

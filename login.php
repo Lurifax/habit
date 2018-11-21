@@ -4,10 +4,11 @@
 
 //Benytter escape for å beskytte mot SQL_injection
 $epost = $mysqli->escape_string($_POST['epost']);
+
 $resultat = $mysqli->query("SELECT * FROM user where epost='$epost'");
 
 if ( $resultat->num_rows == 0) { //Brukeren eksisterer ikke
-  $_SESSION['message'] = "Bruker med denne eposten eksisterer ikke.";
+  $_SESSION['melding'] = "Bruker med denne eposten eksisterer ikke.";
   header("location: error.php");
 }
 else { //Brukeren eksisterer
@@ -27,7 +28,7 @@ else { //Brukeren eksisterer
     header("location: profile.php");
   }
   else {
-    $_SESSION['message'] = "Du har skrevet inn feil passord, prøv igjen";
+    $_SESSION['melding'] = "Du har skrevet inn feil passord, prøv igjen";
     header("location: error.php");
   }
 }

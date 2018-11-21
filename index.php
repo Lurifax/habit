@@ -39,8 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
          <div id="login">
           <h1>Habit</h1>
-
-
           <form action="index.php" method="post" autocomplete="off">
             <div class="field-wrap">
             <label>
