@@ -1,4 +1,8 @@
 <?php
+ob_start();
+session_start();
+require_once('./includes/dbconnect.php');
+
 /*
    Registreringprosess, oppretter brukerinformasjon i databasen og sender
    aktiveringslenke til epost brukeren har benyttet.
@@ -10,18 +14,18 @@ $_SESSION['fornavn'] = $_POST['fornavn'];
 $_SESSION['etternavn'] = $_POST['etternavn'];
 
 // Benytter escape for å beskytte mot SQL injection
-$fornavn = $mysqli->escape_string($_POST['fornavn']);
-$etternavn = $mysqli->escape_string($_POST['etternavn']);
-$epost = $mysqli->escape_string($_POST['epost']);
-$passord = $mysqli->escape_string(password_hash($_POST['passord'], PASSWORD_DEFAULT));
-$hash = $mysqli->escape_string( password_hash(rand(0,1000), PASSWORD_DEFAULT));
+$fornavn = $connection->escape_string($_POST['fornavn']);
+$etternavn = $connection->escape_string($_POST['etternavn']);
+$epost = $connection->escape_string($_POST['epost']);
+$passord = $connection->escape_string(password_hash($_POST['passord'], PASSWORD_DEFAULT));
+$hash = $connection->escape_string( password_hash(rand(0,1000), PASSWORD_DEFAULT));
 
 
 //Sjekker om bruker med epost allerede finnes i basename
-$resultat = $mysqli->query("SELECT * FROM users where epost='$epost'") or die($mysqli->error());
+$resultat = $connection->query("SELECT * FROM user where epost='$epost'");
 
 //Brukeren finnes fra før hvis rader er større enn 0
-if ( $result->num_rows > 0 ) {
+if ( $resultat->num_rows == 1 ) {
 
   $_SESSION['melding'] = 'Epost er allerede registrert.';
   header("location: error.php");
@@ -29,34 +33,32 @@ if ( $result->num_rows > 0 ) {
 }
 else { //Epost er ikke registrert fra før, fortsetter å opprette brukeren
 
-  //SQL for bruk til insert i tabellen 'users'. Aktiv kolonne er default 0 i tabellen users
-  $sql = "INSERT INTO users (fornavn, etternavn, epost, passord, hash) "
+  //SQL for bruk til insert i tabellen 'user'. Aktiv kolonne er default 0 i tabellen user
+  $sql = "INSERT INTO user (fornavn, etternavn, epost, passord, hash) "
           . "VALUES ('$fornavn', '$etternavn', '$epost', '$passord', '$hash')";
 
 //Legger inn brukeren i databasen
-if ( $mysqli->query($sql)){
+if ( $connection->query($sql)){
 
   $_SESSION['aktiv'] = 0; // Verdien er 0 inntil brukeren klikker på tilsendt aktiveringslenke
-  $_SESSION['loggetInn'] = true; // Slik at vi vet brukeren er logget inntil
+  $_SESSION['loggetInn'] = true; // Slik at vi vet brukeren er logget inn
   $_SESSION['melding'] =
-
-      "Aktiveringslenke er sendt til $epost, vennligst følg instruksen i mail for å aktivere brukerkontoen din";
-
+      "Aktiveringslenke er sendt til $epost, vennligst følg instruksen i mail for å aktivere brukerkontoen din.";
       //Sender aktiveringslenke (verify.php)
       $til    = $epost;
       $emne   = "Takk for din registering hos Habit, vennligst aktiver din konto";
       $melding    ='
       Hei ' . $fornavn .',
 
-      Takk for at du registrerte deg på habit.
+      Takk for at du registrerte deg på Habit.
 
       Klikk på aktiveringslenken under for å aktivere din brukerkonto:
 
-        http://localhost/prosjekt/verify.php?email='.$epost.'&hash='.$hash;
+        https://stianalexanderolsen.com/habit/verify.php?epost='.$epost.'&hash='.$hash;
 
         mail( $til, $emne, $melding );
 
-        header("location: profile.php");
+        header("location: success_register.php");
 }
 
 else {
@@ -64,3 +66,5 @@ else {
   header("location: error.php");
   }
 }
+ob_end_flush();
+?>

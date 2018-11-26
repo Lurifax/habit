@@ -20,7 +20,7 @@ else {
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Habit - Se/Endre Habits for <?php echo $fornavn ?></title>
+  <title>Habit - Alle utførte habits for <?php echo $fornavn ?></title>
   <!--<?php include 'css/css.html'; ?> -->
 </head>
 
@@ -29,7 +29,7 @@ else {
 <!--Brukerens habits-->
   <div class="dineHabits">
     <?php
-        //inkluder her habitprograsjon - userProgressHabit.php
+        include 'userProgressHabit.php';
         ?>
       </div>
 

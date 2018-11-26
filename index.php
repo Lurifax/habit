@@ -1,8 +1,17 @@
 <?php
-/* Hovedside med loggin og registrer */
-require 'db.php';
+/* Hovedside med login og registrer */
 session_start();
+//require_once('./includes/dbconnect.php');
 
+$page='dbconnect.php';
+if (!preg_match("#\.\./#",$page) AND
+preg_match("#^[-a-z0-9_.]+$#i",$page) AND
+  file_exists("includes/$page") ) {
+    include("includes/$page");
+} else {
+  print "Invalid page requested. The attempt has been logged.";
+  # Her kan du kode en rutine som logger forsøket på å gå rundt systemet ditt!
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     require 'register.php';
   }
 }
-
 ?>
 <body>
   <div class="form">
@@ -39,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
          <div id="login">
           <h1>Habit</h1>
-          <form action="index.php" method="post" autocomplete="off">
+          <form action="login.php" method="post" autocomplete="off">
             <div class="field-wrap">
             <label>
               Epost<span class="req">*</span>
@@ -62,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <div id="signup">
           <h1>Registrer deg</h1>
 
-          <form action="index.php" method="post" autocomplete="off">
+          <form action="register.php" method="post" autocomplete="off">
 
           <div class="top-row">
             <div class="field-wrap">
@@ -91,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             <label>
               Passord<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off" name='passord'/>
+            <input type="password" required minlength="8" autocomplete="off" name='passord'/>
           </div>
           <button type="submit" class="button button-block" name="register" />Registrer deg</button>
           </form>

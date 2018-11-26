@@ -1,6 +1,8 @@
 <?php
+setlocale (LC_TIME, "no_NO");
 // Setter session med brukeren dersom den eksisterer
 session_start();
+
 
 if ( $_SESSION['loggetInn'] != 1) {
   $_SESSION['melding'] = "Logg inn for å se profilen din";
@@ -29,8 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Habit - Profilen for <?php echo $fornavn ?></title>
-  <!--<?php include 'css/css.html'; ?> -->
+  <title>Habit - Profilen for <?php echo ucfirst($fornavn); ?></title>
+  <!--<?php include 'css/css.html'; ?>-->
 </head>
 
 <body>
@@ -49,26 +51,34 @@ include "UserTodayHabits.php";
     <h2>Opprett ny habit for <?php echo ucfirst($fornavn); ?></h2>
     <form action="newHabit.php" method="post" autocomplete="off" id="newHabit">
     <p>
-      <label>Velg dag onsket for habiten</label>
-      <input type="checkbox" name="allDays[]" value="monday" >Mandag</input>
-      <input type="checkbox" name="allDays[]" value="tuesday" >Tirsdag</input>
-      <input type="checkbox" name="allDays[]" value="wednesday" >Onsdag</input>
-      <input type="checkbox" name="allDays[]" value="thursday" >Torsdag</input>
-      <input type="checkbox" name="allDays[]" value="friday" >Fredag</input>
-      <input type="checkbox" name="allDays[]" value="saturday" >Lørsdag</input>
-      <input type="checkbox" name="allDays[]" value="sunday" >Søndag</input>
+      <label>Velg dag ønsket for habiten</label>
+      <input type="checkbox" name="allDays[]" value="mandag" >Mandag</input>
+      <input type="checkbox" name="allDays[]" value="tirsdag" >Tirsdag</input>
+      <input type="checkbox" name="allDays[]" value="onsdag" >Onsdag</input>
+      <input type="checkbox" name="allDays[]" value="torsdag" >Torsdag</input>
+      <input type="checkbox" name="allDays[]" value="fredag" >Fredag</input>
+      <input type="checkbox" name="allDays[]" value="lørdag" >Lørdag</input>
+      <input type="checkbox" name="allDays[]" value="søndag" >Søndag</input>
       <br /><p>
 
       <label>Hva er din habit?</label><br />
       <input type="text" name="habit" required/><br /><p>
-      <input type="submit" name="newHabit" value="Lagre habit">
+      <?php
+        $sql = "SELECT * FROM user WHERE id = $id AND epost='$epost' AND aktiv=1";
+        $resultat = $connection->query($sql);
+        if ($resultat->num_rows == 1){
+        echo "<input type='submit' name='newHabit' value='Lagre habit'/>";
+      } else {
+      echo "<input type='submit' name='newHabit' value='Lagre habit' disabled/>";
+      }
+      ?>
   </form>
 </div>
 
 <!-- Gå til brukerens oversikt over habits for redigering-->
 <div>
   <a href="changeHabits.php">
-  <input type="button" value="Se/endre dine habits" />
+  <input type="button" value="Se/slett dine habits" />
 </a>
   <p>
 </div>
@@ -99,7 +109,7 @@ include "UserTodayHabits.php";
     if (!$aktiv ) {
       echo
       '<div class="info">
-      Kontoen din er ikke aktivert. Vennligst aktiver kontoen din
+      Kontoen din er ikke aktivert. Du kan derfor ikke lagre habits enda. Vennligst aktiver kontoen din
       ved hjelp av instruksene i mailen sendt til '.$epost.
       '</div>';
     }
@@ -112,7 +122,6 @@ include "UserTodayHabits.php";
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/errorHandler.js"></script>
-  <script src="js/updateHabit.js"></script>
 
 
 

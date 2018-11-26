@@ -14,14 +14,6 @@ else {
   $aktiv = $_SESSION['aktiv'];
 }
 
-
-/* Kaller oppp newHabit.php dersom man velger å registrere my habit  */
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-  if (isset($_POST['newHabit'])) {
-    require 'newHabit.php';
-  }
-}
 ?>
 
 <!DOCTYPE html>

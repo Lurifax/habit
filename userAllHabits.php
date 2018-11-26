@@ -1,23 +1,20 @@
-
-
 <?php
-echo "<meta charset='utf-8'>";
-require 'db.php';
+session_start();
+require_once('./includes/dbconnect.php');
 
 $userId = $_SESSION['id'];
 $fornavn = $_SESSION['fornavn'];
-$resultat = $mysqli->query("SELECT * FROM USERHABIT WHERE USERID = $userId");
+$resultat = $connection->query("SELECT * FROM userhabit WHERE userid = $userId");
 $day = strtolower(date('l'));
 
 // Sjekker her om det er noen habits registrert på brukeren, hvis ikke skrives det til bruker
 if ($resultat->num_rows == 0) {
   echo "Ingen habits registrert. Opprett habits for å se dine habits.";
 
-
 // Hvis det er registrert habits på brukeren skrives alle disse ut
 } else {
-$dagensHabits = $mysqli->query("SELECT userhabit.habitid, userhabit.day, habit.id, habit.name from userhabit inner JOIN habit on userhabit.habitid=habit.id where userhabit.userid = $userId") or die ($mysqli->error());
-  //$dagensHabits = $mysqli->query("SELECT userhabit.habitid, userhabit.day, userhabit.isDone, habit.id, habit.name from userhabit inner JOIN habit on userhabit.habitid=habit.id where userhabit.day='$day' and userhabit.userid = $userId") or die ($mysqli->error());
+$dagensHabits = $connection->query("SELECT userhabit.habitid, userhabit.day, habit.id, habit.name from userhabit inner JOIN habit on userhabit.habitid=habit.id where userhabit.userid = $userId");
+  //$dagensHabits = $connection->query("SELECT userhabit.habitid, userhabit.day, userhabit.isDone, habit.id, habit.name from userhabit inner JOIN habit on userhabit.habitid=habit.id where userhabit.day='$day' and userhabit.userid = $userId") or die ($connection->error());
   echo "<h2>Alle habits for " . ucfirst($fornavn) . "</h2>";
   echo "<table border='1'>
   <tr>

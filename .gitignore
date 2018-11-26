@@ -1,1 +1,3 @@
 secrets.php
+/private/*
+/js/chart/*

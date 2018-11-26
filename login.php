@@ -1,11 +1,12 @@
 <?php
+ob_start();
+session_start();
 /* Sjekker om brukeren finnes og om passord er gyldig */
-//require 'db.php';
+require_once('./includes/dbconnect.php');
 
 //Benytter escape for å beskytte mot SQL_injection
-$epost = $mysqli->escape_string($_POST['epost']);
-
-$resultat = $mysqli->query("SELECT * FROM user where epost='$epost'");
+$epost = $connection->escape_string($_POST['epost']);
+$resultat = $connection->query("SELECT * FROM user where epost='$epost'");
 
 if ( $resultat->num_rows == 0) { //Brukeren eksisterer ikke
   $_SESSION['melding'] = "Bruker med denne eposten eksisterer ikke.";
@@ -24,7 +25,6 @@ else { //Brukeren eksisterer
 
     //Her vet vi om brukeren er logget inn
     $_SESSION['loggetInn'] = true;
-
     header("location: profile.php");
   }
   else {
@@ -32,5 +32,5 @@ else { //Brukeren eksisterer
     header("location: error.php");
   }
 }
-
+ob_end_flush();
 ?>
