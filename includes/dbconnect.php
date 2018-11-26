@@ -1,5 +1,4 @@
 <?php
-require 'secrets.php';
 
 function db_connect() {
 
@@ -9,7 +8,7 @@ function db_connect() {
         // Try and connect to the database, if a connection has not been established yet
     if(!isset($connection)) {
              // Load configuration as an array. Use the actual location of your configuration file
-        $config = parse_ini_file(echo "'"$ini"'");
+        $config = parse_ini_file('config.ini');
         $connection = mysqli_connect($config['servername'],$config['username'],$config['password'],$config['dbname']);
     }
 
