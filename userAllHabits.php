@@ -33,7 +33,7 @@ $dagensHabits = $connection->query("SELECT userhabit.habitid, userhabit.day, hab
     echo "<tr>";
     echo "<td>" . $row['name'] . "</td>";
     echo "<td>" . $habitDay . "</td>";
-    echo "<td>" . "<input type='submit' value='Slett habit'></input>" . "</td>";
+    echo "<td>" . "<input type='submit' value='&#10060;Slett habit'></input>" . "</td>";
     echo "<input type='hidden' value='$habitId' name='habitId'></input>";
     echo "</tr>";
     echo "</form>";

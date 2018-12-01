@@ -54,14 +54,14 @@ if ($resultat->num_rows == 0) {
   <th>Habit</th>
   <th>Habit-dag</th>
   <th>Habit-status</th>
-  <th>Utført?</th>
+  <th>&#x2714;</th>
   </tr>";
 
 // Lager her oversikten i en tabell med dagens habits
 // Lager en form per rad for å bruke POST verdiene i updateHabit.php
   while($row = mysqli_fetch_array($dagensHabits)){
-    $inputEditable = "<td>" . "<input type='submit' class='ikkeutfort' value='Ikke utført'></input>" . "</td>";
-    $inputDisabled = "<td>" . "<input type='submit' value='Utført' disabled></input>" . "</td>";
+    $inputEditable = "<td>" . "<input type='submit' id='ikkeutfort' value='&#x2714;'></input>" . "</td>";
+    $inputDisabled = "<td>" . "<input type='submit' value='&#x2714;' disabled></input>" . "</td>";
     $isDone = $row['isDone'];
     $habitId = $row['id'];
     $habitDay = $row['day'];

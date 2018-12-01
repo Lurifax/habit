@@ -74,7 +74,8 @@ include "UserTodayHabits.php";
       ?>
   </form>
 </div>
-
+<p>
+  <br>
 <!-- Gå til brukerens oversikt over habits for redigering-->
 <div class="habitSettings">
   <a href="changeHabits.php">
