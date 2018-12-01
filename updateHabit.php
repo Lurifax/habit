@@ -2,8 +2,6 @@
 session_start();
 ob_start();
 require_once('./includes/dbconnect.php');
-ini_set("display_errors",1);
-ini_set("ERROR_REPORTING",'ALL');
 
 // Setter userid og sjekker med $resultat om det er registrerte habits på brukeren.
 $userId = $_SESSION['id'];
