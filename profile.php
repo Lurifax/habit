@@ -32,11 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 <head>
   <meta charset="UTF-8">
   <title>Habit - Profilen for <?php echo ucfirst($fornavn); ?></title>
-  <!--<?php include 'css/css.html'; ?>-->
+  <link rel="stylesheet" type="text/css" href="css/profile.css">
 </head>
 
 <body>
-
+<div class="wrapper">
 <div class="dagensHabits">
 
 <?php
@@ -51,14 +51,14 @@ include "UserTodayHabits.php";
     <h2>Opprett ny habit for <?php echo ucfirst($fornavn); ?></h2>
     <form action="newHabit.php" method="post" autocomplete="off" id="newHabit">
     <p>
-      <label>Velg dag ønsket for habiten</label>
-      <input type="checkbox" name="allDays[]" value="mandag" >Mandag</input>
-      <input type="checkbox" name="allDays[]" value="tirsdag" >Tirsdag</input>
-      <input type="checkbox" name="allDays[]" value="onsdag" >Onsdag</input>
-      <input type="checkbox" name="allDays[]" value="torsdag" >Torsdag</input>
-      <input type="checkbox" name="allDays[]" value="fredag" >Fredag</input>
-      <input type="checkbox" name="allDays[]" value="lørdag" >Lørdag</input>
-      <input type="checkbox" name="allDays[]" value="søndag" >Søndag</input>
+      <label>Velg dag ønsket for habiten</label><br>
+      <input type="checkbox" name="allDays[]" value="mandag" >Mandag</input><br />
+      <input type="checkbox" name="allDays[]" value="tirsdag" >Tirsdag</input><br />
+      <input type="checkbox" name="allDays[]" value="onsdag" >Onsdag</input><br />
+      <input type="checkbox" name="allDays[]" value="torsdag" >Torsdag</input><br />
+      <input type="checkbox" name="allDays[]" value="fredag" >Fredag</input><br />
+      <input type="checkbox" name="allDays[]" value="lørdag" >Lørdag</input><br />
+      <input type="checkbox" name="allDays[]" value="søndag" >Søndag</input><br />
       <br /><p>
 
       <label>Hva er din habit?</label><br />
@@ -76,14 +76,14 @@ include "UserTodayHabits.php";
 </div>
 
 <!-- Gå til brukerens oversikt over habits for redigering-->
-<div>
+<div class="habitSettings">
   <a href="changeHabits.php">
   <input type="button" value="Se/slett dine habits" />
 </a>
   <p>
-</div>
 
-<div>
+
+
   <a href="progressHabit.php">
   <input type="button" value="Habitprogresjon" />
 </a>
@@ -92,7 +92,7 @@ include "UserTodayHabits.php";
 
 
 
-<div>
+<div class="logout">
 <!-- Diverse velkomstmeldinger - Beholder disse inntil videre for å se om de skal brukes til slutt -->
   <!--<h2>Velkommen <?php echo $fornavn; ?></h1>
     <h2><?php echo $fornavn. " " . $etternavn; ?></h2>
@@ -123,7 +123,7 @@ include "UserTodayHabits.php";
   <script src="js/index.js"></script>
   <script src="js/errorHandler.js"></script>
 
-
+</div>
 
 </body>
 

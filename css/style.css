@@ -111,6 +111,7 @@ a:hover {
 h1 {
   text-align: center;
   color: #ffffff;
+  font-family: Arial;
   font-weight: 300;
   margin: 0 0 40px;
 }
@@ -118,6 +119,7 @@ h1 {
 h2 {
     text-align: center;
     color: #1ab188;
+    font-family: Arial;
     font-weight: 1000;
     margin: 0;
 }

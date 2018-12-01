@@ -21,24 +21,25 @@ else {
 <head>
   <meta charset="UTF-8">
   <title>Habit - Se/Endre Habits for <?php echo $fornavn ?></title>
-  <!--<?php include 'css/css.html'; ?> -->
+  <link rel="stylesheet" type="text/css" href="css\changeHabits.css">
 </head>
 
 
 <body>
 <!--Brukerens habits-->
+<div class="wrapper">
   <div class="dineHabits">
     <?php
         include "userAllHabits.php";
         ?>
       </div>
 
-      <div>
+      <div class="logout">
         <a href="profile.php">
         <input type="button" value="Tilbake til profilen" />
       </a><p>
-      </div>
-<div>
+
+
 <!-- Diverse velkomstmeldinger - Beholder disse inntil videre -->
   <!--<h2>Velkommen <?php echo $fornavn; ?></h1>
     <h2><?php echo $fornavn. " " . $etternavn; ?></h2>
@@ -60,6 +61,7 @@ else {
     }
     ?>
   </p>
+</div>
 
 
 <!-- Beholder disse inntil videre til sluttstyling skal gjøres på prosjektet -->
