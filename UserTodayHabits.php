@@ -43,7 +43,7 @@ if ($resultat->num_rows == 0) {
 
 // Sjekker her om det er habits registrert på en annen dag enn idag, hvis ja skrives det ut til brukeren
 } elseif ($dagUtenHabit->num_rows == 0) {
-  echo "Du har ingen flere habits a utføre for idag.";
+  echo "<center>Du har ingen habits å utføre for idag.</center>";
 
 // Hvis det er registrert habits for dagen idag skrives tabell med habits ut
 }else {
@@ -65,10 +65,11 @@ if ($resultat->num_rows == 0) {
     $isDone = $row['isDone'];
     $habitId = $row['id'];
     $habitDay = $row['day'];
+    $habitName = $row['name'];
     $inputUtfort = '';
     echo "<form action='updateHabit.php' method='post' name='updateHabit'>";
     echo "<tr>";
-    echo "<td>" . $row['name'] . "</td>";
+    echo "<td>" . $habitName . "</td>";
     echo "<td>" . $habitDay . "</td>";
     // Endrer her verdiene som lagres i databasen (0,1) til mer forståelige statuser
     switch ($isDone) {
@@ -87,6 +88,7 @@ if ($resultat->num_rows == 0) {
     echo $inputUtfort;
     echo "<input type='hidden' value='$habitId' name='habitId'></input>";
     echo "<input type='hidden' value='$habitDay' name='habitDay'></input>";
+    echo "<input type='hidden' value='$habitName' name='habitName'></input>";
     echo "</tr>";
     echo "</form>";
 

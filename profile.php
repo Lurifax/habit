@@ -101,7 +101,7 @@ include "UserTodayHabits.php";
     <h3><?php echo $id; ?></h3>-->
 
     <!-- Logoutknapp -->
-    <a href="logout.php"><button class="button button" name="logout"/>Log Out</button></a>
+    <a href="logout.php"><button class="button button" name="logout"/>Logg ut</button></a>
   </div>
 
     <p>

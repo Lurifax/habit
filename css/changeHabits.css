@@ -38,6 +38,13 @@ h2 {
     font-weight: 1000;
 }
 
+h3 {
+    text-align: center;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 12px;
+}
+
 button {
   border: 0;
   outline: none;
@@ -99,7 +106,7 @@ input[type=button]:hover, .button:focus {
 
 .logout{
   margin: 0 auto;
-  width: 300px;
+  width: 350px;
 }
 
 
