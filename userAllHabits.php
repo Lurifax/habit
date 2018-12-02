@@ -15,6 +15,9 @@ if ($resultat->num_rows == 0) {
 } else {
 $dagensHabits = $connection->query("SELECT userhabit.habitid, userhabit.day, habit.id, habit.name from userhabit inner JOIN habit on userhabit.habitid=habit.id where userhabit.userid = $userId");
   echo "<h2>Alle habits for " . ucfirst($fornavn) . "</h2>";
+  echo "<h3>Her ser du alle dine registrerte habits.</h3>";
+  echo "<h3>Om du ønsker å slette en habit for følgende dager kan det gjøres her.</h3>";
+  echo "<h3>Merk at dersom du sletter en habit med flere dager vil habiten for alle dagene slettes.</h3>";
   echo "<table border='1'>
   <tr>
   <th>Habit</th>

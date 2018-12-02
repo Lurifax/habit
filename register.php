@@ -52,7 +52,8 @@ if ( $connection->query($sql)){
 
       Takk for at du registrerte deg på Habit.
 
-      Klikk på aktiveringslenken under for å aktivere din brukerkonto:
+      Klikk på aktiveringslenken under for å aktivere din brukerkonto.
+      Dersom aktiveringslinken gir feilmelding, prøv å kopiere hele linken og lime inn i nettleser.
 
         https://stianalexanderolsen.com/habit/verify.php?epost='.$epost.'&hash='.$hash;
 
