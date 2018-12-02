@@ -60,6 +60,7 @@ if ($resultat->num_rows == 0) {
 // Lager her oversikten i en tabell med dagens habits
 // Lager en form per rad for å bruke POST verdiene i updateHabit.php
   while($row = mysqli_fetch_array($dagensHabits)){
+    //Lager her to inputknapper - Den ene enabled og den andre ikke som brukes avhengig av om habiten er utført eller ikke.
     $inputEditable = "<td>" . "<input type='submit' id='ikkeutfort' value='&#x2714;'></input>" . "</td>";
     $inputDisabled = "<td>" . "<input type='submit' value='&#x2714;' disabled></input>" . "</td>";
     $isDone = $row['isDone'];
@@ -72,6 +73,7 @@ if ($resultat->num_rows == 0) {
     echo "<td>" . $habitName . "</td>";
     echo "<td>" . $habitDay . "</td>";
     // Endrer her verdiene som lagres i databasen (0,1) til mer forståelige statuser
+    // InputEditable blir aktiv dersom habit ikke er utført og isDone i databasen er 0. InputDisabled blir brukt om habit er utført med isDone.
     switch ($isDone) {
       case "0":
         $isDone = 'Ikke utført';
@@ -84,8 +86,8 @@ if ($resultat->num_rows == 0) {
         default:
       }
     echo "<td>" . $isDone . "</td>";
-    //echo "<td>" . "<input type='submit' value='Utfort'></input>" . "</td>";
     echo $inputUtfort;
+    //Bruker her hidden input for å ta med videre mot updateHabit.php
     echo "<input type='hidden' value='$habitId' name='habitId'></input>";
     echo "<input type='hidden' value='$habitDay' name='habitDay'></input>";
     echo "<input type='hidden' value='$habitName' name='habitName'></input>";

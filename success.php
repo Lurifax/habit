@@ -13,6 +13,7 @@ session_start();
     <h1><?php 'Vellykket'; ?></h1>
     <p>
     <?php
+    //Skriver her ut suksessmelding til brukeren med session variabel dersom den er satt
         if ( isset($_SESSION['melding']) AND !empty($_SESSION['melding']) ) {
           echo $_SESSION['melding'];
         }

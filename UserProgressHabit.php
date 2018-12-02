@@ -2,6 +2,7 @@
 session_start();
 require ('./includes/dbconnect.php');
 
+//Sjekker om brukeren er logget inn
 if ( $_SESSION['loggetInn'] != 1) {
   $_SESSION['melding'] = "Logg inn for å se profilen din";
   header("location: error.php");
@@ -10,6 +11,7 @@ else {
 
 $userId = $_SESSION['id'];
 $fornavn = $_SESSION['fornavn'];
+//lager spørring her mot arktivtabellen som har alle utførte habits
 $resultat = $connection->query("SELECT * FROM archiveuserhabit WHERE userid = $userId");
 $day = strtolower(date('l'));
 }
@@ -39,11 +41,11 @@ switch ($day) {
     break;
 }
 
-// Sjekker her om det er noen habits registrert på brukeren, hvis ikke skrives det til bruker
+// Sjekker her om det er noen habits registrert på brukeren som er utført, hvis ikke skrives det til bruker
 if ($resultat->num_rows == 0) {
   echo "Ingen habits registrert eller utført. Opprett og utfør habits for å se din progresjon.";
 
-// Hvis det er registrert habits på brukeren skrives disse ut i en tabell
+// Hvis det er registrert habits på brukeren som er utført skrives disse ut i en tabell
 } else {
 
 $alleUtførteHabits = $connection->query("SELECT DISTINCT habitid, isDone, userid, habitname from archiveuserhabit where isDone = 1 and userid = $userId;");
@@ -67,6 +69,7 @@ $alleUtførteHabits = $connection->query("SELECT DISTINCT habitid, isDone, useri
     echo "<tr>";
     echo "<td>" . $habitNavn . "</td>";
     echo "<td>" . $antResultat['total'] . "</td>";
+    //Lager her en visning av hvor stort endringsnivået er ut fra hvor mange ganger man har utført en habit iløpet av en uke
     if ($antResultat['total'] > 4){
       echo "<td>Meget høyt</td>";
     }
@@ -86,9 +89,6 @@ $alleUtførteHabits = $connection->query("SELECT DISTINCT habitid, isDone, useri
     elseif($antResultat['total'] > 0) {
       echo "<td>Meget lavt</td>";
     }
-    /*elseif($antResultat['total'] > 4) {
-      echo "<td>Hoy</td>";
-    }*/
 
     echo "</tr>";
   }

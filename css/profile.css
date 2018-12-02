@@ -24,7 +24,7 @@ table {
 }
 
 input[type=submit:disabled]{
-  color:red;
+  background-color: red;
 }
 
 button:disabled,
@@ -32,6 +32,7 @@ button[disabled]{
   background-color: #00aacc;
   color:red;
 }
+
 
 h1 {
   text-align: center;
@@ -161,4 +162,15 @@ label {
 }
 
 #ikkeutfort:hover, #ikkeutfort:focus {
-  background: #179b77;
+  background: #179b77;}
+
+div.info {
+    color: pink;
+    display: box;
+    text-align: center;
+    padding: 5px;
+    margin-top: -20px;
+    margin-bottom: 15px;
+    border: 1px solid red;
+    background: #66131c;
+}

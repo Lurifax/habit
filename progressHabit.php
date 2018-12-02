@@ -26,7 +26,9 @@ else {
 
 <body>
 <div class="wrapper">
-<!--Brukerens habits-->
+<!------------------------------------------------>
+<!--Henter her alle utførte habits for brukeren og viser hvor mange ganger de er utført og endringsnivå-->
+<!------------------------------------------------>
   <div class="dineHabits">
     <?php
         include 'userProgressHabit.php';
@@ -57,13 +59,6 @@ else {
     ?>
   </p>
 </div>
-<!-- Beholder disse inntil videre til sluttstyling skal gjøres på prosjektet -->
-<!--
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src="js/index.js"></script>
-<script src="errorHandler.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
--->
 
 </body>
 </html>

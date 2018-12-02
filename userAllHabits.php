@@ -14,7 +14,6 @@ if ($resultat->num_rows == 0) {
 // Hvis det er registrert habits på brukeren skrives alle disse ut
 } else {
 $dagensHabits = $connection->query("SELECT userhabit.habitid, userhabit.day, habit.id, habit.name from userhabit inner JOIN habit on userhabit.habitid=habit.id where userhabit.userid = $userId");
-  //$dagensHabits = $connection->query("SELECT userhabit.habitid, userhabit.day, userhabit.isDone, habit.id, habit.name from userhabit inner JOIN habit on userhabit.habitid=habit.id where userhabit.day='$day' and userhabit.userid = $userId") or die ($connection->error());
   echo "<h2>Alle habits for " . ucfirst($fornavn) . "</h2>";
   echo "<table border='1'>
   <tr>

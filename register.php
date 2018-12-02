@@ -24,7 +24,7 @@ $hash = $connection->escape_string( password_hash(rand(0,1000), PASSWORD_DEFAULT
 //Sjekker om bruker med epost allerede finnes i basename
 $resultat = $connection->query("SELECT * FROM user where epost='$epost'");
 
-//Brukeren finnes fra før hvis rader er større enn 0
+//Brukeren finnes fra før hvis rader er større enn 0 og gir da melding om det.
 if ( $resultat->num_rows == 1 ) {
 
   $_SESSION['melding'] = 'Epost er allerede registrert.';
@@ -61,7 +61,7 @@ if ( $connection->query($sql)){
         header("location: success_register.php");
 }
 
-else {
+else { //Dersom registreringen feiler vil det gis feilmelding
   $_SESSION['melding'] = 'Registering av din bruker mislyktes, prøv igjen';
   header("location: error.php");
   }

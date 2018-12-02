@@ -6,7 +6,7 @@ session_start();
 // Sjekker at form benytter POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-
+        //Hasher her nytt passord
         $nyttpassord = password_hash($_POST['nyttpassord'], PASSWORD_DEFAULT);
 
         // Henter epost, hash og id fra hidden inputfelt

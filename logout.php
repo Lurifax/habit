@@ -1,5 +1,7 @@
 <?php
+/* ----------------------------------- */
 /* Logger ut, unset og destroy session */
+/* -----------------------------------*/
 session_start();
 session_unset();
 session_destroy();
@@ -11,7 +13,7 @@ session_destroy();
   <title>Logg ut</title>
   <?php include 'css/css.html'; ?>
 </head>
-
+<!-- Gir melding her til brukeren at bruker er logget ut -->
 <body>
     <div class="form">
           <h1>Habit</h1>

@@ -1,7 +1,9 @@
 <?php
 ob_start();
 session_start();
-/* Sjekker om brukeren finnes og om passord er gyldig */
+// --------------------------------------------------
+// Siden her sjekker om brukeren finnes og om passord er gyldig
+// --------------------------------------------------
 require_once('./includes/dbconnect.php');
 
 //Benytter escape for å beskytte mot SQL_injection
@@ -28,6 +30,7 @@ else { //Brukeren eksisterer
     header("location: profile.php");
   }
   else {
+    //Dersom det er feil passord sendes brukeren til error med melding.
     $_SESSION['melding'] = "Du har skrevet inn feil passord, prøv igjen";
     header("location: error.php");
   }

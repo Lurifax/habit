@@ -51,7 +51,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST') {
   <div class="form">
 
     <h1>Tilbakestill passord</h1>
-
+<!--Brukeren fyller her inn eposten som ønskes tilbakestilt-->
     <form action="forgot.php" method="post">
      <div class="field-wrap">
       <label>

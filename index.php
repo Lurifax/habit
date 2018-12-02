@@ -1,7 +1,6 @@
 <?php
 /* Hovedside med login og registrer */
 session_start();
-//require_once('./includes/dbconnect.php');
 
 $page='dbconnect.php';
 if (!preg_match("#\.\./#",$page) AND
@@ -9,8 +8,8 @@ preg_match("#^[-a-z0-9_.]+$#i",$page) AND
   file_exists("includes/$page") ) {
     include("includes/$page");
 } else {
-  print "Invalid page requested. The attempt has been logged.";
-  # Her kan du kode en rutine som logger forsøket på å gå rundt systemet ditt!
+  print "Ugyldig forespørsel. Forsøket er blitt logget.";
+  # Her kunne det vært rutine for å logge forsøk på å gå rundt systemet
 }
 ?>
 <!DOCTYPE html>
@@ -36,15 +35,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 ?>
 <body>
+  <!-- To knapper som gir mulighet for enten å logge inn eller registrere seg -->
   <div class="form">
-
       <ul class="tab-group">
         <li class="tab"><a href="#signup">Registrer deg</a></li>
         <li class="tab active"><a href="#login">Logg inn</a></li>
       </ul>
 
       <div class="tab-content">
-
+        <!------------------------------>
+        <!--Logg inn -->
+        <!------------------------------>
          <div id="login">
           <h1>Habit</h1>
           <form action="login.php" method="post" autocomplete="off">
@@ -61,12 +62,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             </label>
             <input type="password" required autocomplete="off" name="passord"/>
           </div>
-
+          <!------------------------------>
+          <!-- Glemt passord-->
+          <!------------------------------>
           <p class="forgot"><a href="forgot.php">Glemt passord?</a></p>
           <button class="button button-block" name="login" />Logg inn</button>
           </form>
         </div>
-
+        <!------------------------------>
+        <!--Registrering av ny bruker -->
+        <!------------------------------>
         <div id="signup">
           <h1>Registrer deg</h1>
 
