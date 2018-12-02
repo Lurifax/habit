@@ -1,5 +1,4 @@
 <?php
-ob_start();
 //Starter session
 session_start();
 //Tar inn databasekobling
@@ -11,10 +10,11 @@ $habit = $_POST['habit'];
 $days = $_POST['allDays'];
 
 //Sjekk om det finnes likt gjøremål
-$resultat = $connection->query("SELECT * FROM HABIT WHERE NAME='$habit'");
+//$resultat = $connection->query("SELECT * FROM habit WHERE name='$habit'");
+$resultat = $connection->query("SELECT habit.name, userhabit.userid from habit inner join userhabit on habit.id=userhabit.habitid where habit.name='$habit' and userhabit.userid=$userId;");
 
 //Lager funksjoner for vellykket eller mislykket inserter
-function success_HabitSuksessfyltRegistrert() {
+function success_HabitSuksessfyltRegistrert($habit) {
   $_SESSION['melding'] = 'Habiten ' . $habit . ' er registrert';
   header("location: success_habit.php");
 }
@@ -45,7 +45,6 @@ if ($resultat->num_rows > 0 ) {
     . "VALUES ('$userId', '$habitId', '$day')";
       $connection->query($sqlUserHabit);
   }
-success_HabitSuksessfyltRegistrert();
+success_HabitSuksessfyltRegistrert($habit);
 }
-ob_end_flush();
 ?>

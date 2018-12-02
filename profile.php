@@ -52,13 +52,14 @@ include "UserTodayHabits.php";
     <form action="newHabit.php" method="post" autocomplete="off" id="newHabit">
     <p>
       <label>Velg dag ønsket for habiten</label><br>
-      <input type="checkbox" name="allDays[]" value="mandag" >Mandag</input><br />
-      <input type="checkbox" name="allDays[]" value="tirsdag" >Tirsdag</input><br />
-      <input type="checkbox" name="allDays[]" value="onsdag" >Onsdag</input><br />
-      <input type="checkbox" name="allDays[]" value="torsdag" >Torsdag</input><br />
-      <input type="checkbox" name="allDays[]" value="fredag" >Fredag</input><br />
-      <input type="checkbox" name="allDays[]" value="lørdag" >Lørdag</input><br />
-      <input type="checkbox" name="allDays[]" value="søndag" >Søndag</input><br />
+
+      <input type="checkbox" name="allDays[]" value="mandag" id="mandag" >Mandag</input><br />
+      <input type="checkbox" name="allDays[]" value="tirsdag" id="tirsdag" >Tirsdag</input><br />
+      <input type="checkbox" name="allDays[]" value="onsdag" id="onsdag" >Onsdag</input><br />
+      <input type="checkbox" name="allDays[]" value="torsdag" id="torsdag" >Torsdag</input><br />
+      <input type="checkbox" name="allDays[]" value="fredag" id="fredag" >Fredag</input><br />
+      <input type="checkbox" name="allDays[]" value="lørdag" id="lørdag" >Lørdag</input><br />
+      <input type="checkbox" name="allDays[]" value="søndag" id="søndag" >Søndag</input><br />
       <br /><p>
 
       <label>Hva er din habit?</label><br />
