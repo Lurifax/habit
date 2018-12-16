@@ -71,6 +71,7 @@ if ( isset($_GET['epost']) && !empty($_GET['epost']) AND isset($_GET['hash']) &&
 
     </div>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<!-- Henter her javascript til slutt som hjelper til å kjøre sammenligning av passord for comparePw med onkeyup -->
 <script src="js/index.js"></script>
 <!-- Henter her javascript til slutt som kjører en sammenligning av passord-->
 <script src="js/comparePw.js"></script>
